@@ -14,18 +14,24 @@ public sealed partial class MainPage : Page
     }
     private void CheckSystem_Click(object sender, RoutedEventArgs e)
     {
-        var packages = HelperData.Packages;
+        resultsCollection.Clear();
+        ResultsListView.ItemsSource = null;
+        var packages = HelperData.MainPackages;
         foreach (var package in packages)
         {
             CheckPackages(package.Name);
         }
         GetResults();
     }
-    private void Install_Click(object sender, RoutedEventArgs e)
-    {
-        var selectedItem = ResultsListView.SelectedItem as Models.Result;
-        InstallPackage(selectedItem.PackageName);
-    }
+        private void ResultsListView_SelectionChanged(object sender,  SelectionChangedEventArgs e)
+        {
+            var selectedItem =  ((ListView)sender).SelectedItem as Models.Result;
+            if (selectedItem != null)
+            {
+                this.Frame.Navigate(typeof(PackageDetails), selectedItem.PackageName);
+            }
+            ((ListView)sender).SelectedItem = null;
+        }
     private void InstallPackage(string packageName)
     {
         Process proc = new Process();

@@ -12,7 +12,9 @@
           Text="IT Assist Tools!"
           HorizontalAlignment="Center" />
         <Button Content="Check System" Click="CheckSystem_Click" />
-        <ListView Name="ResultsListView">
+        <ListView Name="ResultsListView"
+            SelectionChanged="ResultsListView_SelectionChanged"
+            SelectionMode="Single">
           <ListView.HeaderTemplate>
             <DataTemplate>
               <StackPanel Orientation="Horizontal">
@@ -26,7 +28,6 @@
                 <StackPanel Orientation="Horizontal">
                   <TextBlock Text="{Binding PackageName}" Width="200" />
                   <TextBlock Text="{Binding IsInstalled}" Width="200" />
-                  <Button Content="Install" Click="Install_Click" />
                 </StackPanel>
               </DataTemplate>
           </ListView.ItemTemplate>
