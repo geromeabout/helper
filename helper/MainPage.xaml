@@ -1,0 +1,37 @@
+﻿<Page x:Class="helper.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:local="using:helper"
+      Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+      <ScrollViewer>
+    <Grid>
+      <StackPanel
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+        <TextBlock AutomationProperties.AutomationId="HelloTextBlock"
+          Text="IT Assist Tools!"
+          HorizontalAlignment="Center" />
+        <Button Content="Check System" Click="CheckSystem_Click" />
+        <ListView Name="ResultsListView">
+          <ListView.HeaderTemplate>
+            <DataTemplate>
+              <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Package Name" Width="200" />
+                <TextBlock Text="Is Installed" Width="200" />
+              </StackPanel>
+            </DataTemplate>
+          </ListView.HeaderTemplate>
+          <ListView.ItemTemplate>
+            <DataTemplate>
+                <StackPanel Orientation="Horizontal">
+                  <TextBlock Text="{Binding PackageName}" Width="200" />
+                  <TextBlock Text="{Binding IsInstalled}" Width="200" />
+                  <Button Content="Install" Click="Install_Click" />
+                </StackPanel>
+              </DataTemplate>
+          </ListView.ItemTemplate>
+          </ListView>
+      </StackPanel>
+    </Grid>
+    </ScrollViewer>
+</Page>
